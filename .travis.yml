@@ -1,0 +1,19 @@
+language: go
+go: 
+  - 1.3.1
+  
+env:
+  - secret:
+
+before_script:
+  - go get gopkg.in/check.v1
+  - go get code.google.com/p/go.tools/cmd/cover
+  - go get github.com/axw/gocov/gocov
+  - go get github.com/mattn/goveralls
+  - export PATH=$PATH:$HOME/gopath/bin/
+  
+after_success:
+  - goveralls -coverprofile=cov.out
+  
+script:
+  - go test -covermode=count -coverprofile=cov.out
