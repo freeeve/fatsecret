@@ -3,8 +3,8 @@ go:
 - 1.3.1
 env:
   global:
-  - secure: oVqYvrmz08cbe2BmC9RNn42pGTIMVyI/s3rF0x/aNXGdHlLJRQbwHn2+cMJ9tQGIbtnt+Cl6LMcQYQlFnwz6ZCA4DqEDm6Aa9eZWAtzYoNSyfsKSdAGrVr8qx42csP/1angmO9+4b/x2onczuT6F1eLiEfcmDsnVot/rIKL5aHY=
-  - secure: V6LAJznLGKUCXtXRE8ezT41CVZ6W1GHabRC7ewPJufK51qtx02QBcNzW6nXtWXROK/Yw8xu+RPfSA9i0M33tD+rt/TNZWb/THaW5gT/gGg6ZNo0liVyG7y2OvRbj5FhYH1NqKvoKUMQHJOCrGaFusVnm/ZrF9ePUlndlfsNfrK0=
+  - secure: TqHy0ysnHZDUF/oCS21jUmPAqvPm1exsRhJLfpI41wo61sWiYg+2AuLKUTzTdsHvE6SDzUMJrJwGD9EMB5OsN0+tyumnW5D+TXnQM6dn8C9KLOWpHzqT+OSvusVWC8MYwT134/iRrvI4CqkHH5SEvYYZTWD1Qo+oHc63ZbCGT+g=
+  - secure: aH5FiffmlxRxtZcWN/JpZd5iG7JivG3ehRYOps0H0UtvOpqxvFYJNVzio8vyUVwy/huPKDF0WIBSCFgTlRfBGD4oJn8tImDlaulz1K999ewMCMPdjk1ueTPP2ZKG8sE3ZSUOfXbvqi0NxyP0GKb/rDrM4LFNPC21DHyTxGAJflE=
 before_script:
 - go get gopkg.in/check.v1
 - go get code.google.com/p/go.tools/cmd/cover
