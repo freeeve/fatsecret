@@ -32,7 +32,7 @@ type FoodSearchResponseFoods struct {
 }
 
 func (fs FatSecretConn) FoodSearch(query string) ([]Food, error) {
-	resp, err := fs.post(
+	resp, err := fs.get(
 		"foods.search",
 		map[string]string{"search_expression": query},
 	)
@@ -40,6 +40,7 @@ func (fs FatSecretConn) FoodSearch(query string) ([]Food, error) {
 		return nil, err
 	}
 	body, err := ioutil.ReadAll(resp)
+	defer resp.Close()
 	//fmt.Println(string(body))
 	foodresp := FoodSearchResponse{}
 	err = json.Unmarshal(body, &foodresp)

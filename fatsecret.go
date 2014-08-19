@@ -28,7 +28,7 @@ func Connect(apikey, secret string) (FatSecretConn, error) {
 	}, nil
 }
 
-func (fs FatSecretConn) post(method string, params map[string]string) (io.Reader, error) {
+func (fs FatSecretConn) get(method string, params map[string]string) (io.ReadCloser, error) {
 	reqTime := fmt.Sprintf("%d", time.Now().Unix())
 	r := rand.New(rand.NewSource(time.Now().UnixNano()))
 	m := map[string]string{
@@ -60,7 +60,7 @@ func (fs FatSecretConn) post(method string, params map[string]string) (io.Reader
 	// drop initial &
 	sigQueryStr = sigQueryStr[1:]
 	sigBaseStr := fmt.Sprintf("GET&%s&%s", url.QueryEscape(fsurl), escape(sigQueryStr))
-	fmt.Println("sigstr:", sigBaseStr)
+	//fmt.Println("sigstr:", sigBaseStr)
 
 	mac := hmac.New(sha1.New, []byte(fs.secret+"&"))
 	mac.Write([]byte(sigBaseStr))
@@ -81,7 +81,7 @@ func (fs FatSecretConn) post(method string, params map[string]string) (io.Reader
 	reqQuery = reqQuery[1:]
 
 	requrl += reqQuery
-	fmt.Println("url :", requrl)
+	//fmt.Println("url :", requrl)
 	resp, err := http.Get(requrl)
 	if err != nil {
 		return nil, err

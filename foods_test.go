@@ -1,7 +1,6 @@
 package fatsecret
 
 import (
-	"fmt"
 	"os"
 	. "gopkg.in/check.v1"
 )
@@ -25,7 +24,7 @@ func (s *FoodsSuite) TestFoodSearch(c *C) {
 	c.Assert(err, IsNil)
 	foods, err := fs.FoodSearch("banana")
 	c.Assert(err, IsNil)
-	fmt.Println(foods)
+	//fmt.Println(foods)
 	c.Assert(len(foods), Equals, 20)
 }
 
@@ -34,6 +33,6 @@ func (s *FoodsSuite) TestMultiwordFoodSearch(c *C) {
 	c.Assert(err, IsNil)
 	foods, err := fs.FoodSearch("banana pie")
 	c.Assert(err, IsNil)
-	fmt.Println(foods)
+	//fmt.Println(foods)
 	c.Assert(len(foods), Equals, 20)
 }
