@@ -11,8 +11,18 @@ You do need an API key. To run unit tests, two environment variables are require
 
 ## minimum viable snippet
 ```
+package main
+
 import (
+  "fmt"
+  "os"
+
   "github.com/wfreeman/fatsecret"
+)
+
+var (
+  apikey = os.Getenv("FATSECRET_APIKEY")
+  secret = os.Getenv("FATSECRET_SECRET")
 )
 
 func main() {
@@ -20,12 +30,12 @@ func main() {
   if err != nil {
     panic(err)
   }
-  
+
   foods, err := fs.FoodSearch("banana")
   if err != nil {
     panic(err)
   }
-  
+
   fmt.Println(foods[0])
 }
 ```
