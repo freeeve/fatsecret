@@ -17,7 +17,6 @@ func Test(t *testing.T) {
 func (s *FatSecretSuite) TestConnect(c *C) {
 	apikey := os.Getenv("FATSECRET_APIKEY")
 	secret := os.Getenv("FATSECRET_SECRET")
-	fs, err := Connect(apikey, secret)
+	_, err := Connect(apikey, secret)
 	c.Assert(err, IsNil)
-	c.Assert(fs.Consumer != nil, Equals, true)
 }
