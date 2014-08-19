@@ -33,7 +33,7 @@ func (fs FatSecretConn) post(method string, params map[string]string) (io.Reader
 	r := rand.New(rand.NewSource(time.Now().UnixNano()))
 	m := map[string]string{
 		"method":                 method,
-		"oauth_consumer_key":     apikey,
+		"oauth_consumer_key":     fs.apikey,
 		"oauth_nonce":            fmt.Sprintf("%d", r.Int63()),
 		"oauth_signature_method": "HMAC-SHA1",
 		"oauth_timestamp":        reqTime,
@@ -62,7 +62,7 @@ func (fs FatSecretConn) post(method string, params map[string]string) (io.Reader
 	sigBaseStr := fmt.Sprintf("GET&%s&%s", url.QueryEscape(fsurl), escape(sigQueryStr))
 	fmt.Println("sigstr:", sigBaseStr)
 
-	mac := hmac.New(sha1.New, []byte(secret+"&"))
+	mac := hmac.New(sha1.New, []byte(fs.secret+"&"))
 	mac.Write([]byte(sigBaseStr))
 	sig := base64.StdEncoding.EncodeToString(mac.Sum(nil))
 
